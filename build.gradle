@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+
+    id 'application'
+    id 'idea'
+    id 'jacoco'
+}
+
+repositories {
+    jcenter()
+}
+
+jacoco {
+    toolVersion '0.8.4'
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 1
+            }
+        }
+    }
+}
+
+test.finalizedBy jacocoTestReport, jacocoTestCoverageVerification
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+    testCompile 'org.assertj:assertj-core:3.6.2'
+
+}
+
+mainClassName = 'string.utils.StringUtil'
